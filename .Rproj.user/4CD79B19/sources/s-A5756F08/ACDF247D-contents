@@ -1,0 +1,126 @@
+---
+title: "ReadMe"
+author: "Mark"
+date: "14/01/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Shiny Basics
+
+### 01_data_prep
+Reads in initial data set and splits up this data set into 3 files
+These files are then saved in the directory "neiss"
+
+The file `data_analysis.r` just has a look at the data sets in neiss and does
+some exploratory stuff.
+
+### 02_basics_reactive
+The file `prototype.r` contains a good example of using a reactive function
+
+code snippet here:
+
+```{r eval = FALSE}
+# injuries loaded previously
+# the value of selcted will change each time input$code changes
+selected <- reactive(injuries %>% filter(prod_code == input$code))
+# and then this how to use
+selected() %>% count(diag, wt = weight, sort = TRUE)
+```
+
+This also uses the ui components:
+
+`fluidRow(column(8, ui_component, 4, ui_component))`
+
+The file `polish-tables 2.r` has some great snippets of parameterising 
+dplyr using the {} syntax. 
+
+The file `polish-tables.R` has a data.frame called selected which is made to
+be a reactive object and is tied to the user chaning an input box.  This 
+'selected' data.frame is then used in a subsequent reactive expression which 
+generates a data.frame called summary.  This summary() object is reactive then 
+used to create a graph.   
+
+The file `narrative.R` shows how to connect an action button and pull
+out and display a piece of text. 
+
+### 03_more_advanced
+The file `app 4.r` shows how to capture clicks on a graph and show the 
+cordinates that were clicked.
+
+The file `app_2.r` shows a row of a data frame when the user clicks exactly
+on a point in the graph. 
+
+The file `app2_doggie.r` shows how to display a photo jpg which is stored
+on disk. It also shows the glue package which in this case enables a variable
+to be inserted into a piece of html.
+
+The file `app.r` show us the **observeEvent()** function which monitors an input
+widgit (in this case a click from a button.). This also shows the 
+**showNotification("So long", duration = 3, type = "error")** function which 
+prints message to screen.
+
+
+
+
+
+## Plotly
+
+## 04_plotly_fundermentals
+
+### Plotly_01_basics
+The following are in `plotly_01_basics.R`
+
+* Convert a basic ggplot into a scatter plot
+* Create a basic plot.ly bar chart [reorder factor]
+* Create a histogram 
+* bivariate graphics - scatter plot and stacked bar chart
+
+
+### Plotly_02_colors_opacity_glyphs_hover
+
+The following are in `plotly_02_colors_opacity_glyphs_hover.R`
+
+* Specify color
+* Specify opacity - because of overplotting
+* Change glyph
+* Add specific colour
+* Map scatter points to various colors
+* Add a theme eg "dark2" for colours
+* Define specific colours as a vector
+* Hover information for scatter plots
+
+### Customising your layout 
+
+See `plotly_03_customising_layout.R`
+
+# Adding axis labels
+# transform scale --- log scale......
+# remove zero line
+# customise the canvas
+
+
+## 05_plotly_beyond_basics
+
+### Layering
+See `plotly_04_layering.R`
+
+* Layering traces ---- adding loess to a scatter plot
+* Compare two models 1 scatter plot and 2 lines 
+* layering densities === these are like histograms === only with lines.
+
+
+### Subplots facets 
+
+Subplots correlation matrices and heatmaps (2d histograms).
+
+See here `plotly_05_subplots_and_facets.R` 
+
+* Subplot - These are like facets
+* automatically creating facets   group_by() + do()
+* scatterplot matrices (pair wise ) (note lassoo selection - interactive )
+* binned scatter plot [heatmap] 
+
