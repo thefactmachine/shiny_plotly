@@ -124,3 +124,17 @@ See here `plotly_05_subplots_and_facets.R`
 * scatterplot matrices (pair wise ) (note lassoo selection - interactive )
 * binned scatter plot [heatmap] 
 
+## Links
+https://unleash-shiny.rinterface.com/index.html
+https://engineering-shiny.org/
+https://happygitwithr.com/
+https://shiny.rstudio.com/articles/layout-guide.html
+https://shiny.rstudio.com/articles/modules.html
+https://shiny.rstudio.com/articles/css.html
+https://bootswatch.com/
+https://adv-r.hadley.nz/functionals.html
+Shiny Cheetsheet
+https://www.aridhia.com/blog/using-shiny-modules-to-simplify-building-complex-apps/
+https://emilyriederer.netlify.app/post/shiny-modules/
+
+
