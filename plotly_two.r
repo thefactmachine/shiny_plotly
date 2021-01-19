@@ -1,53 +1,43 @@
-
 rm(list = ls())
-
 library(dplyr)
 library(plotly)
+library(purrr)
 
 # moving beyond simple interactivity.
 # animations and linked brushing.
+us_economy <- read.csv("plotly_data/state_economic_data.csv")
 
-# data sets
-# world_indicators
-# us_economy
-
-us_economy <- read.csv("state_economic_data.csv")
-
-# 20 years data... 20 frames.
-
-# 51 obs here.
-us_economy %>% filter(year == 2000) %>% nrow()
-
+# ============================================================================
+# this animates by year....bubble plot
 us_economy %>%
   plot_ly(x = ~gdp, y = ~house_price) %>%
-  add_markers(size = ~population, color = ~region,
-              frame = ~year, ids = ~state,
+  add_markers(size = ~population, 
+              color = ~region,
+              frame = ~year, 
+              ids = ~state,
               marker = list(sizemode = "diameter"))
 
-
-# Animate a bubble chart of house_price against gdp over region
-us_economy %>% filter(year == 2017) %>% filter(region == "West")
-
-# like using faceting..
+# ============================================================================
+# Animates by regions (only 4 regions)
 us_economy %>%
   filter(year == 2017) %>%
   plot_ly(x = ~gdp, y = ~house_price) %>%
-  add_markers(size = ~population, color = ~region,
-              frame = ~region, ids = ~state,
+  add_markers(size = ~population, 
+              color = ~region,
+              frame = ~region, 
+              ids = ~state,
               marker = list(sizemode = "diameter"))
 
-# =================================================
-# polishing animations...............
-# time between frames
-# frame transitions
-# slider appearance
-# colour shape et
-# hover
+# ============================================================================
+# polishing animations: time between frames, frame transitions,
+# slider appearance, colour, shape, et hover
+# ============================================================================
+# adding y, x axis titles and log transform the scale.......
+
 df_us_economy_dist <- us_economy %>%
   group_by(year, state) %>% slice(1)
 
-
-# Polish the axis titles and log-transform the x-axis
+# 
 df_us_economy_dist %>%
   plot_ly(x = ~gdp, y = ~house_price) %>%
   add_markers(
@@ -60,48 +50,38 @@ df_us_economy_dist %>%
     yaxis = list(title = "Housing price index")
   )
 
-# ============ adding layers
+# ============================================================================
 # Add the year as background text and remove the slider
 df_us_economy_dist %>%
-
   plot_ly(x = ~gdp, y = ~house_price, hoverinfo = "text", text = ~state) %>%
-
   add_text(x = 200000, y = 450, text = ~year, frame = ~year,
            textfont = list(color = toRGB("gray80"), size = 150)) %>%
-
   add_markers(size = ~population, color = ~region,
               frame = ~year, ids = ~state,
               marker = list(sizemode = "diameter", sizeref = 3)) %>%
-
-  layout(xaxis = list(title = "Real GDP (millions USD)", type = "log"),
+layout(xaxis = list(title = "Real GDP (millions USD)", type = "log"),
          yaxis = list(title = "Housing price index")) %>%
-
-  animation_slider(hide = TRUE)
-
-# ===============================================================
-# ===============================================================
-# ===============================================================
-# this is a good example.  Shows 1997 as a reference.
-
+animation_slider(hide = TRUE)
+# ============================================================================
+# create an animated scatterplot with baseline from 1997 (GOOD)
 # extract the 1997 data
 us1997 <- df_us_economy_dist %>%
   filter(year == 1997)
-
-# create an animated scatterplot with baseline from 1997
-df_us_economy_dist %>%
-
+s_economy_dist %>%
   plot_ly(x = ~gdp, y = ~house_price) %>%
-
-  add_markers(data = us1997, marker = list(color = toRGB("gray60"), opacity = 0.5)) %>%
-
-  add_markers(frame = ~year, ids = ~state, data = us_economy, showlegend = FALSE, alpha = 0.5) %>%
-
+  add_markers(data = us1997, 
+              marker = list(color = toRGB("gray60"), 
+                            opacity = 0.5)) %>%
+  add_markers(frame = ~year, 
+              ids = ~state, data = us_economy, 
+              showlegend = FALSE, 
+              alpha = 0.5) %>%
   layout(xaxis = list(type = "log"))
+
 # ===============================================================
+# Did not work here......
 # we want to create cumulative datasets to display an animation.
 # so we want to have something like: 1970; 1970, 1971; 1970, 1971, 1972 ....
-library(dplyr)
-library(purrr)
 
 df_med_hpi <-
   df_us_economy_dist %>%
@@ -113,10 +93,7 @@ df_med_hpi <-
 df_med_hpi %>%
   split(.$year)
 
-
 df_cal <- df_us_economy_dist %>% filter(state == "CA")
-
-
 
 df_cal_accum <- df_cal %>% split(.$year) %>%
   purrr::accumulate(~bind_rows(.x, .y)) %>%
@@ -129,7 +106,6 @@ df_cal_accum %>%
   add_lines(
     frame = ~frame, showlegend = FALSE
   )
-
 
 # ========================================================================
 # linking two charts......
@@ -226,8 +202,6 @@ subplot(p1, p2) %>% hide_legend()
 state_data <- df_us_economy_dist %>%
   SharedData$new(key = ~state)
 
-
-
 # Using the shared data, plot house price vs. year
 state_data %>%
   plot_ly(x = ~year, y = ~house_price) %>%
@@ -251,54 +225,4 @@ shared_div <- SharedData$new(us2017, key = ~division)
 
 # 2. Persistent selection
 # selected cases accumulate
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
