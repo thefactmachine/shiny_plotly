@@ -1,7 +1,0 @@
-library(tidyverse)
-
-df_test <- data.frame(x = 1:40, y = 40:80)
-
-df_test %>% head()
-
-
