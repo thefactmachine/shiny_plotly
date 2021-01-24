@@ -51,6 +51,7 @@ vct_target_1_base[3]
 vct_value[3]
 
 # =============================================================================
-
+# ssh
+# https://serverfault.com/questions/11029/how-can-you-change-the-default-location-of-the-ssh-folder
 
 
