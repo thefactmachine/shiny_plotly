@@ -129,12 +129,16 @@ See here `plotly_05_subplots_and_facets.R`
 See here `d3_markdown`
 
 ## To do
-* d3 work through r2d3 examples here
-* r markdown css
+* d3 work through r2d3 examples here: https://rstudio.github.io/r2d3/articles/introduction.html
+* d3 user control
+* r markdown css        DONE
+* r markdown sass       DONE
 * flexdashboards
 * programmatically build R markdown
 * parameterise R markdown
-
+* download gitlab
+* data.table rewrite
+* r arrow
 
 
 

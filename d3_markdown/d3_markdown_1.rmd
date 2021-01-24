@@ -1,8 +1,10 @@
 ---
-# title: "Generate a chart with d3"
+title: "Generate a chart with d3"
 # author: "Mark"
 #date: "24/01/2021"
-output: html_document
+output:
+  html_document:
+    css: "style.css"
 ---
 
 ---
@@ -13,7 +15,6 @@ output: html_document
 ```{r setup, include=FALSE}
 library(r2d3)
 library(tidyverse)
-knitr::opts_chunk$set(echo = TRUE)
 ```
 
 # D3 Example in R Markdown
@@ -25,6 +26,7 @@ the chart. We can even generate the data in R.
 # these are global in scope
 lst_options <- list(color = 'orange')
 vct_data <- c(0.3, 0.6, 0.8, 0.95, 0.40, 0.20)
+source("generate_css.r")
 ```
 
 
