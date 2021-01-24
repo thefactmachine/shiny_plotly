@@ -1,0 +1,50 @@
+---
+# title: "Generate a chart with d3"
+# author: "Mark"
+#date: "24/01/2021"
+output: html_document
+---
+
+---
+# comments like this.
+# comment out a big chunk. Select the code and then shift + command + C
+---
+
+```{r setup, include=FALSE}
+library(r2d3)
+library(tidyverse)
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# D3 Example in R Markdown
+We generate data in R, pass it to D3, and draw
+the chart. We can even generate the data in R.
+
+
+```{r, echo = FALSE}
+# these are global in scope
+lst_options <- list(color = 'orange')
+vct_data <- c(0.3, 0.6, 0.8, 0.95, 0.40, 0.20)
+```
+
+
+
+```{r echo = FALSE}
+r2d3(data = vct_data, script = "barchart.js", options = lst_options)
+```
+
+
+
+<!-- ```{d3, data = vct_data, options = lst_options, echo = FALSE} -->
+<!-- svg.selectAll('rect') -->
+<!--   .data(data) -->
+<!--   .enter() -->
+<!--     .append('rect') -->
+<!--       .attr('width', function(d) { return d * 672; }) -->
+<!--       .attr('height', '10px') -->
+<!--       .attr('y', function(d, i) { return i * 16; }) -->
+<!--       .attr('fill', options.color); -->
+<!-- ``` -->
+
+
+

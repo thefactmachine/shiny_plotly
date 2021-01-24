@@ -124,6 +124,23 @@ See here `plotly_05_subplots_and_facets.R`
 * scatterplot matrices (pair wise ) (note lassoo selection - interactive )
 * binned scatter plot [heatmap] 
 
+
+### D3 Examples
+See here `d3_markdown`
+
+## To do
+* d3 work through r2d3 examples here
+* r markdown css
+* flexdashboards
+* programmatically build R markdown
+* parameterise R markdown
+
+
+
+
+
+
+
 ## Links
 https://unleash-shiny.rinterface.com/index.html
 https://engineering-shiny.org/
@@ -136,5 +153,13 @@ https://adv-r.hadley.nz/functionals.html
 Shiny Cheetsheet
 https://www.aridhia.com/blog/using-shiny-modules-to-simplify-building-complex-apps/
 https://emilyriederer.netlify.app/post/shiny-modules/
+rstudioapi::addTheme("https://raw.githubusercontent.com/batpigandme/night-owlish/master/rstheme/night-owlish.rstheme", apply = TRUE)
+https://serverfault.com/questions/11029/how-can-you-change-the-default-location-of-the-ssh-folder
+https://github.com/rstudio/r2d3.
+
+## D3 stuff here
+https://towardsdatascience.com/getting-r-and-d3-js-to-play-nicely-in-r-markdown-
+https://stackoverflow.com/questions/25819539/how-to-add-an-interactive-visualization-to-r-markdown
+https://rstudio.github.io/r2d3/articles/introduction.html
 
 
