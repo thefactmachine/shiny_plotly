@@ -1,5 +1,2 @@
 
-
-
-
-rstudioapi::addTheme("https://raw.githubusercontent.com/batpigandme/night-owlish/master/rstheme/night-owlish.rstheme", apply = TRUE)
+rstudioapi::addTheme("themen/kuro.rstheme", apply = TRUE)

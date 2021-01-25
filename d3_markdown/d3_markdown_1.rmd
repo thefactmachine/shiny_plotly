@@ -7,10 +7,6 @@ output:
     css: "style.css"
 ---
 
----
-# comments like this.
-# comment out a big chunk. Select the code and then shift + command + C
----
 
 ```{r setup, include=FALSE}
 library(r2d3)
@@ -30,10 +26,16 @@ source("generate_css.r")
 ```
 
 
-
 ```{r echo = FALSE}
 r2d3(data = vct_data, script = "barchart.js", options = lst_options)
 ```
+
+
+
+
+<!-- # comments like this. -->
+<!-- # comment out a big chunk. Select the code and then shift + command + C -->
+
 
 
 

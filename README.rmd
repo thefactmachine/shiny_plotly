@@ -65,8 +65,6 @@ prints message to screen.
 
 
 
-
-
 ## Plotly
 
 ## 04_plotly_fundermentals
@@ -133,14 +131,17 @@ See here `d3_markdown`
 * d3 user control
 * r markdown css        DONE
 * r markdown sass       DONE
+* fonts in markdown
 * flexdashboards
 * programmatically build R markdown
 * parameterise R markdown
 * download gitlab
 * data.table rewrite
 * r arrow
+* r studio theme
+* dyson
 
-
+include fragments of html https://bookdown.org/yihui/rmarkdown-cookbook/include-html.html
 
 
 
